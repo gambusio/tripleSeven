@@ -29,7 +29,7 @@ public class slotMachine {
 
         reelNumber = 3;    // default configure a classic Liberty-bell three-reel slots
         reelSize = 200;
-        symbolNumber = 7;
+        symbolNumber = 8;
         credits = 100;
         reel = new String[reelNumber][reelSize];
         cursors = new short[reelNumber];
@@ -44,6 +44,8 @@ public class slotMachine {
         symbols[4] = STAR;
         symbols[5] = LIBERTY_BELL;
         symbols[6] = HORSE_SHOES;
+        symbols[7] = HORSE_SHOES;
+
 
         for (int i = 0; i < reelNumber; i++) {
             for (int j = 0; j < reelSize; j++) {
