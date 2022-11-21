@@ -1,22 +1,19 @@
-import media.cristina.slotMachine.slotMachine;
+import media.cristina.slotMachine.SlotMachine;
 
 public class termClient {
 
     public static void main(String[] args) {
-        slotMachine liberty = new slotMachine();
-        short numSpins = 0;
+        SlotMachine liberty = new SlotMachine();
 
-        boolean exit = false;
-        while (!exit) {
-                if (liberty.getCredits() == 0) {
-                    System.out.println("No credits, game over");
-                    System.out.println("SPINS: " + numSpins);
-                    exit = true;
-                } else {
-                    liberty.spin();
-                    numSpins++;
-                    System.out.println(liberty.getReel() + " PRIZE: " + liberty.getPrize() + " CREDITS: " + liberty.getCredits());
-                }
-        }
+        liberty.state.addCredits(4);
+        liberty.state.playGame();
+        liberty.state.withdrawBalance();
+        liberty.state.ejectCoins();
+        liberty.state.addCredits(20);
+        liberty.state.playGame();
+        liberty.state.playGame();
+        liberty.state.ejectCoins();
+        liberty.state.withdrawBalance();
+        liberty.state.ejectCoins();
     }
 }

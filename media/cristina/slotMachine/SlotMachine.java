@@ -4,8 +4,9 @@ package media.cristina.slotMachine;
 import java.util.Objects;
 import java.util.Random;
 
-public class slotMachine {
+public class SlotMachine {
 
+    public State state;
     //constants for the default slot machine
     private final String DIGIT_SEVEN = "\u0037";
     private final String DIAMOND = "\u2666";
@@ -25,12 +26,13 @@ public class slotMachine {
     String[] symbols;
     short credits;
 
-    public slotMachine() {
+    public SlotMachine() {
 
+        state = new InitialState(this);
         reelNumber = 3;    // default configure a classic Liberty-bell three-reel slots
         reelSize = 200;
         symbolNumber = 8;
-        credits = 100;
+        credits = 0;
         reel = new String[reelNumber][reelSize];
         cursors = new short[reelNumber];
         symbols = new String[symbolNumber];
@@ -49,10 +51,14 @@ public class slotMachine {
 
         for (int i = 0; i < reelNumber; i++) {
             for (int j = 0; j < reelSize; j++) {
-                //reel[i][j] = symbols[j % symbolNumber];
                 reel[i][j] = symbols[rand.nextInt(symbolNumber)];
             }
         }
+    }
+
+    public void changeState(State state) {
+        System.out.println(this.state.getClass().getName() + "->" + state.getClass().getName());
+        this.state = state;
     }
 
     public String getReel() {
